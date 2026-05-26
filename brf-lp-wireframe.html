@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRF Landing Page — Wireframe v.02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@200;300;400;500;600&family=Noto+Sans+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --bg-alt: #F2F0EA;
+  --ink: #1A1A1A;
+  --ink-sub: #6B6B68;
+  --line: #C9C5BC;
+  --line-soft: #E0DDD5;
+  --accent: #8B6F47;
+  --highlight: #FFF4D6;
+  --note: #1F4E8C;
+  --note-bg: #EAF0FA;
+  --warn-bg: #FBF1E5;
+  --maxw: 1240px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.meta-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink); color: var(--bg);
+  padding: 10px 24px;
+  font-size: 11px; font-weight: 400; letter-spacing: 0.15em;
+  display: flex; justify-content: space-between; align-items: center;
+  text-transform: uppercase;
+}
+.meta-bar .meta-left { display: flex; gap: 24px; align-items: center; }
+.meta-bar .meta-tag {
+  background: rgba(255,255,255,0.15);
+  padding: 3px 8px; border-radius: 2px; font-size: 10px;
+}
+
+.doc-header {
+  border-bottom: 1px solid var(--line);
+  padding: 32px 24px 24px;
+  background: var(--bg);
+}
+.doc-header-inner {
+  max-width: var(--maxw); margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 16px;
+}
+.doc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px; font-weight: 300; letter-spacing: -0.01em; line-height: 1.1;
+}
+.doc-meta {
+  text-align: right;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ink-sub); line-height: 1.8;
+}
+.doc-sub { margin-top: 8px; font-size: 13px; color: var(--ink-sub); letter-spacing: 0.05em; }
+
+.legend {
+  max-width: var(--maxw); margin: 24px auto; padding: 0 24px;
+  display: flex; gap: 32px; flex-wrap: wrap;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-sub);
+}
+.legend-item { display: flex; align-items: center; gap: 8px; }
+.legend-box {
+  width: 24px; height: 12px;
+  border: 1px dashed var(--line); display: inline-block;
+}
+.legend-box.cta { background: var(--ink); border: none; }
+.legend-box.image { background: var(--line-soft); border: 1px solid var(--line); }
+.legend-box.note { background: var(--note-bg); border: 1px solid var(--note); }
+
+.wf-section {
+  max-width: var(--maxw); margin: 0 auto 24px; padding: 0 24px;
+}
+.wf-frame {
+  position: relative;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+.wf-label {
+  position: absolute; top: -1px; left: -1px;
+  background: var(--ink); color: var(--bg);
+  padding: 6px 14px;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  z-index: 2;
+}
+.wf-content { padding: 56px 32px 40px; }
+.wf-note {
+  background: var(--note-bg);
+  border-left: 3px solid var(--note);
+  padding: 14px 18px;
+  margin-top: 8px; margin-bottom: 32px;
+  font-size: 12px; line-height: 1.7; color: #2a3a55;
+}
+.wf-note strong {
+  display: block; margin-bottom: 4px;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: 10px; color: var(--note);
+}
+
+.ph {
+  background: var(--bg-alt);
+  border: 1px dashed var(--line);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-sub);
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  text-align: center; padding: 16px;
+  position: relative;
+}
+.ph-image {
+  background: linear-gradient(135deg, var(--line-soft) 25%, transparent 25%, transparent 75%, var(--line-soft) 75%),
+              linear-gradient(135deg, var(--line-soft) 25%, transparent 25%, transparent 75%, var(--line-soft) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+  background-color: white;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  min-height: 200px;
+  font-weight: 500;
+  text-shadow:
+    -1px -1px 0 white, 1px -1px 0 white,
+    -1px 1px 0 white, 1px 1px 0 white,
+    -2px 0 0 white, 2px 0 0 white,
+    0 -2px 0 white, 0 2px 0 white,
+    0 0 6px white, 0 0 10px white;
+}
+.ph-text {
+  background: transparent;
+  border: 1px dashed var(--line);
+  color: var(--ink-sub);
+  min-height: 60px;
+}
+.ph-cta {
+  background: var(--ink); color: var(--bg);
+  border: none; padding: 18px 32px;
+  font-size: 12px; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase;
+  cursor: default; display: inline-block;
+}
+.ph-cta-secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--ink);
+}
+.ph-label {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-sub); margin-bottom: 12px; font-weight: 400;
+}
+.ph-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; color: var(--ink); letter-spacing: -0.01em;
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.flex-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mt-32 { margin-top: 32px; }
+.text-center { text-align: center; }
+
+/* HERO */
+.s01-hero {
+  min-height: 600px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 32px;
+}
+.s01-top {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px; font-weight: 300; line-height: 1.25;
+  max-width: 640px;
+}
+.s01-top .placeholder-text {
+  display: inline-block; padding: 4px 12px;
+  border: 1px dashed var(--line);
+  color: var(--ink-sub); font-style: italic;
+  font-size: 14px; font-family: 'Inter', sans-serif;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.s01-visual { min-height: 320px; }
+.s01-bottom {
+  display: flex; justify-content: space-between; align-items: end;
+  gap: 32px; flex-wrap: wrap;
+}
+.s01-price-block { display: flex; flex-direction: column; gap: 8px; }
+
+/* BAUHAUS EXPLAIN */
+.bauhaus-explain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.bauhaus-explain-visual { min-height: 380px; }
+.bauhaus-explain-content {
+  display: flex; flex-direction: column; gap: 20px;
+  padding: 16px 0;
+}
+.bauhaus-info-block {
+  padding: 20px;
+  border-left: 2px solid var(--line);
+}
+.bauhaus-info-block-h {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-sub); margin-bottom: 8px;
+}
+
+/* PRODUCT */
+.product-header { margin-bottom: 24px; }
+.product-title-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 300; letter-spacing: -0.01em;
+}
+.product-meta-row {
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ink-sub); margin-top: 8px;
+}
+.product-main-visual { min-height: 380px; }
+.product-sub-visuals {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; margin-top: 12px;
+}
+.product-sub-visuals .ph-image { min-height: 140px; }
+
+.product-spec-table {
+  width: 100%;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 24px 0;
+}
+.product-spec-table tr { border-bottom: 1px solid var(--line-soft); }
+.product-spec-table tr:last-child { border-bottom: none; }
+.product-spec-table td {
+  padding: 12px 8px;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-sub);
+}
+.product-spec-table td:first-child {
+  width: 30%; color: var(--ink); font-weight: 400;
+}
+
+.color-selector {
+  display: flex; gap: 16px; margin: 16px 0; flex-wrap: wrap;
+}
+.color-swatch-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.color-swatch {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg-alt);
+}
+.color-swatch.active { border: 2px solid var(--ink); }
+.color-swatch-label {
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-sub);
+}
+
+.product-purchase-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  margin-top: 16px;
+}
+.product-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 300;
+}
+
+/* LIFESTYLE GALLERY */
+.lifestyle-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  min-height: 480px;
+}
+.lifestyle-grid .ph-image:nth-child(1) { grid-row: 1 / 3; }
+
+/* CAROUSEL */
+.carousel-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.carousel-main {
+  min-height: 480px;
+  position: relative;
+}
+.carousel-thumbs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.carousel-thumb {
+  min-height: 100px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.carousel-thumb.active {
+  opacity: 1;
+  border: 2px solid var(--ink);
+}
+.carousel-progress {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 4px;
+}
+.carousel-progress-bar {
+  height: 2px;
+  background: var(--line-soft);
+  position: relative;
+  overflow: hidden;
+}
+.carousel-progress-bar:first-child::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 60%;
+  background: var(--ink);
+}
+
+/* QUALITY */
+.quality-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.quality-item {
+  padding: 24px;
+  border: 1px solid var(--line-soft);
+  text-align: center;
+}
+.quality-icon {
+  width: 48px; height: 48px; margin: 0 auto 16px;
+  background: var(--bg-alt); border: 1px dashed var(--line);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; color: var(--ink-sub);
+}
+.quality-h {
+  font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.quality-desc { font-size: 11px; color: var(--ink-sub); line-height: 1.6; }
+
+/* VOICE */
+.voice-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.voice-card {
+  padding: 24px;
+  background: var(--bg-alt);
+  border: 1px solid var(--line-soft);
+  min-height: 220px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.voice-text { font-size: 12px; line-height: 1.7; color: var(--ink-sub); }
+.voice-meta {
+  margin-top: 16px;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-sub);
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+/* FAQ */
+.faq-list { border-top: 1px solid var(--line); }
+.faq-item {
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.faq-q { font-size: 14px; font-weight: 400; letter-spacing: 0.05em; }
+.faq-toggle { font-size: 18px; color: var(--ink-sub); }
+
+/* FINAL CTA */
+.final-cta-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+.final-cta-card {
+  border: 1px solid var(--ink);
+  padding: 32px;
+  text-align: center;
+  min-height: 360px;
+  display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+}
+.final-cta-card .ph-image {
+  width: 100%; min-height: 180px; margin-bottom: 16px;
+}
+
+/* FOOTER */
+.wf-footer {
+  background: var(--ink); color: var(--bg);
+  padding: 64px 32px;
+  margin-top: 48px;
+}
+.wf-footer-inner {
+  max-width: var(--maxw); margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+}
+.wf-footer h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 300; margin-bottom: 16px;
+}
+.wf-footer .ph-text {
+  border-color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.5);
+  background: transparent;
+}
+
+/* STICKY MOBILE CTA */
+.sticky-indicator {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--ink); color: var(--bg);
+  padding: 16px 24px;
+  display: none; justify-content: center; align-items: center;
+  z-index: 90;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+}
+.sticky-indicator-note {
+  position: fixed; bottom: 60px; right: 24px;
+  background: var(--warn-bg);
+  border: 1px solid var(--accent);
+  color: var(--ink);
+  padding: 8px 12px;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  display: none;
+}
+
+/* SECTION DIVIDER */
+.section-divider {
+  max-width: var(--maxw); margin: 56px auto 24px; padding: 0 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.section-divider::before, .section-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--line);
+}
+.section-divider-text {
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--ink-sub);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .grid-2, .grid-3,
+  .bauhaus-explain-grid,
+  .quality-grid,
+  .voice-row,
+  .final-cta-grid,
+  .wf-footer-inner {
+    grid-template-columns: 1fr;
+  }
+  .lifestyle-grid { grid-template-columns: 1fr 1fr; }
+  .lifestyle-grid .ph-image:nth-child(1) { grid-row: auto; }
+  .carousel-main { min-height: 320px; }
+  .carousel-thumbs { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .carousel-thumb { min-height: 60px; padding: 8px; font-size: 9px; }
+  .carousel-progress { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .product-sub-visuals { grid-template-columns: 1fr 1fr 1fr; }
+  .doc-title { font-size: 32px; }
+  .s01-top { font-size: 28px; }
+  .product-title-en { font-size: 28px; }
+  .sticky-indicator { display: flex; }
+  .sticky-indicator-note { display: block; }
+  .wf-content { padding: 56px 20px 32px; }
+}
+
+@media print {
+  .meta-bar, .sticky-indicator, .sticky-indicator-note { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="meta-bar">
+  <div class="meta-left">
+    <span class="meta-tag">WIREFRAME</span>
+    <span>BRF Landing Page — Component Layout</span>
+  </div>
+  <div>v.02</div>
+</div>
+
+<header class="doc-header">
+  <div class="doc-header-inner">
+    <div>
+      <div class="doc-title">BRF Landing Page<br>Wireframe</div>
+      <div class="doc-sub">Wassily Chair + D4 Folding Chair / Google検索広告 + Meta広告 両対応</div>
+    </div>
+    <div class="doc-meta">
+      Bauhaus Reproduct Furniture<br>
+      Wireframe Document<br>
+      2026.05
+    </div>
+  </div>
+</header>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-box image"></span><span>Image / Visual</span></div>
+  <div class="legend-item"><span class="legend-box"></span><span>Text Block</span></div>
+  <div class="legend-item"><span class="legend-box cta"></span><span>CTA Button</span></div>
+  <div class="legend-item"><span class="legend-box note"></span><span>Design Note</span></div>
+</div>
+
+<!-- S00: GLOBAL HEADER -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S00 — Global Header (Fixed)</div>
+    <div class="wf-content" style="padding-top: 48px;">
+      <div class="flex-row" style="justify-content: space-between;">
+        <div class="ph ph-text" style="width: 120px; min-height: 40px;">LOGO</div>
+        <div class="flex-row">
+          <div class="ph ph-text" style="min-width: 80px; min-height: 32px;">About</div>
+          <div class="ph ph-text" style="min-width: 80px; min-height: 32px;">Product</div>
+          <div class="ph ph-text" style="min-width: 80px; min-height: 32px;">Contact</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — Global Header</strong>
+    スクロール時も追従する常時固定ヘッダー。ロゴをタップでLP冒頭に戻る。メニューはアンカーリンクで各セクションへ移動。モバイル時はハンバーガーメニュー化を想定。
+  </div>
+</div>
+
+<!-- S01: HERO -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S01 — Hero (First View)</div>
+    <div class="wf-content">
+      <div class="s01-hero">
+        <div class="s01-top">
+          <span class="placeholder-text">ステートメントコピー (細字大型)</span>
+        </div>
+        <div class="ph ph-image s01-visual">Hero Visual<br>(Wassily Chair + D4 Folding Chairの2点並置 / ライフスタイル写真)</div>
+        <div class="s01-bottom">
+          <div class="s01-price-block">
+            <span class="ph-label">Sub Copy</span>
+            <div class="ph ph-text" style="min-width: 280px;">サブコピー(1-2行)</div>
+          </div>
+          <div>
+            <span class="ph-label">CTA (弱め)</span>
+            <button class="ph-cta ph-cta-secondary">商品を見る ↓</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — Hero / 両流入の同時対応設計</strong>
+    上半分=世界観コピー(Meta広告流入の共感獲得)、下半分=価格+CTA(リスティング流入の即決確認)の3層構造。CTAは「商品を見る」など弱めの誘導に留め、まだクロージングしない。Meta流入の潜在層がいきなり強CTAで離脱するのを防ぐ。
+  </div>
+</div>
+
+<!-- S02: 使用イメージ -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S02 — 使用イメージ</div>
+    <div class="wf-content">
+      <div class="text-center" style="margin-bottom: 32px;">
+        <span class="ph-label">Section Title</span>
+        <div class="ph-h" style="font-size: 28px; margin-top: 8px;">使用イメージ</div>
+      </div>
+      <div class="carousel-wrap">
+        <div class="ph ph-image carousel-main">
+          メインビジュアル (大判)<br>
+          ※選択中のサムネイル写真がここに表示される<br>
+          時間経過で自動切替 (4-6秒間隔想定)
+        </div>
+        <div class="carousel-thumbs">
+          <div class="ph ph-image carousel-thumb active">サムネ 01<br>(現在表示中)</div>
+          <div class="ph ph-image carousel-thumb">サムネ 02</div>
+          <div class="ph ph-image carousel-thumb">サムネ 03</div>
+          <div class="ph ph-image carousel-thumb">サムネ 04</div>
+          <div class="ph ph-image carousel-thumb">サムネ 05</div>
+        </div>
+        <div class="carousel-progress">
+          <div class="carousel-progress-bar"></div>
+          <div class="carousel-progress-bar"></div>
+          <div class="carousel-progress-bar"></div>
+          <div class="carousel-progress-bar"></div>
+          <div class="carousel-progress-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — 使用イメージ / カルーセル形式</strong>
+    Heroの直後に配置することで、スクロール初期にブランドの世界観を強く印象付ける。Meta広告経由の潜在層(ビジュアル系流入)に対して「これは自分の暮らしに合う」と直感的に共感させる役割。大判メインビジュアル1枚+下に小さいサムネイル横並びの形式で、メインビジュアルが時間経過で自動切り替わる(4-6秒間隔想定)。サムネイルクリックでも切替可能にする。
+  </div>
+</div>
+
+<!-- S03: WHY BRF -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S03 — Why BRF (Brand Philosophy)</div>
+    <div class="wf-content">
+      <div class="text-center" style="margin-bottom: 48px;">
+        <span class="ph-label">Section Title</span>
+        <div class="ph-h" style="font-size: 32px; margin-top: 8px;">なぜBRFか / 3つの思想</div>
+      </div>
+      <div class="grid-3">
+        <div class="ph" style="min-height: 240px; flex-direction: column; padding: 32px;">
+          <div class="ph-label" style="margin-bottom: 16px;">01</div>
+          <div class="ph-h" style="font-size: 22px; margin-bottom: 12px;">機能美</div>
+          <div class="ph ph-text" style="width: 100%; min-height: 60px;">説明テキスト(3-4行)</div>
+        </div>
+        <div class="ph" style="min-height: 240px; flex-direction: column; padding: 32px;">
+          <div class="ph-label" style="margin-bottom: 16px;">02</div>
+          <div class="ph-h" style="font-size: 22px; margin-bottom: 12px;">大衆化</div>
+          <div class="ph ph-text" style="width: 100%; min-height: 60px;">説明テキスト(3-4行)</div>
+        </div>
+        <div class="ph" style="min-height: 240px; flex-direction: column; padding: 32px;">
+          <div class="ph-label" style="margin-bottom: 16px;">03</div>
+          <div class="ph-h" style="font-size: 22px; margin-bottom: 12px;">賢い選択</div>
+          <div class="ph ph-text" style="width: 100%; min-height: 60px;">説明テキスト(3-4行)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — Why BRF / ブランド説得の核</strong>
+    Meta広告経由の潜在層に「なぜBRFか」を伝える説得セクション。3思想(機能美 / 大衆化 / 賢い選択)はブランド定義に準拠。スマホでは縦並びに自動変換。ここの読了率がCVRに大きく影響するため、コピーは短く印象的に。
+  </div>
+</div>
+
+<!-- S04: BAUHAUS & REPRODUCT -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S04 — Bauhaus & Reproduct</div>
+    <div class="wf-content">
+      <div class="text-center" style="margin-bottom: 32px;">
+        <span class="ph-label">Section Title</span>
+        <div class="ph-h" style="font-size: 32px; margin-top: 8px;">バウハウスと、リプロダクトのこと</div>
+      </div>
+      <div class="bauhaus-explain-grid">
+        <div class="ph ph-image bauhaus-explain-visual">Visual<br>(バウハウス時代の建築・家具・象徴的なアーカイブ画像 / 1920-30年代の雰囲気)</div>
+        <div class="bauhaus-explain-content">
+          <div class="bauhaus-info-block">
+            <div class="bauhaus-info-block-h">About Bauhaus</div>
+            <div class="ph ph-text" style="min-height: 80px;">バウハウスとは何か<br>(歴史 / 思想 / なぜ名作と呼ばれるか)<br>※テキストはこちらで記載</div>
+          </div>
+          <div class="bauhaus-info-block">
+            <div class="bauhaus-info-block-h">About Reproduct</div>
+            <div class="ph ph-text" style="min-height: 80px;">リプロダクトとは何か<br>(定義 / コピー品との違い / なぜ手の届く価格で実現できるか)<br>※テキストはこちらで記載</div>
+          </div>
+          <div class="bauhaus-info-block">
+            <div class="bauhaus-info-block-h">What BRF Reproduces</div>
+            <div class="ph ph-text" style="min-height: 80px;">BRFが扱うのは何のリプロダクトか<br>(Marcel Breuer / バウハウス時代の名作 2点)<br>※テキストはこちらで記載</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — Bauhaus & Reproduct / 知識と納得の橋渡し</strong>
+    バウハウスやリプロダクトという言葉を初めて知るユーザー(主にMeta広告経由の潜在層)に向けて、丁寧に背景を解説するセクション。「コピー品ではなく、思想を継承した正統な再構築」という認識を作る役割。テキスト内容は別途用意。左にビジュアル、右に3つの情報ブロック(バウハウスとは / リプロダクトとは / BRFが扱うもの)。
+  </div>
+</div>
+
+<!-- SECTION DIVIDER -->
+<div class="section-divider">
+  <span class="section-divider-text">Product Section</span>
+</div>
+
+<!-- S05: WASSILY CHAIR -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S05 — Product A: Wassily Chair (Main Product)</div>
+    <div class="wf-content">
+      <div class="product-header">
+        <div class="ph-label">Product 01</div>
+        <div class="product-title-en mt-16">Wassily Chair</div>
+        <div class="product-meta-row">ワシリーチェア / Marcel Breuer / 1925</div>
+      </div>
+
+      <div class="ph ph-image product-main-visual">Main Product Visual<br>(白背景・商品単体 or ライフスタイル写真メイン)</div>
+
+      <div class="product-sub-visuals">
+        <div class="ph ph-image">Detail 01</div>
+        <div class="ph ph-image">Detail 02</div>
+        <div class="ph ph-image">Detail 03</div>
+      </div>
+
+      <div class="mt-32">
+        <span class="ph-label">Design Story</span>
+        <div class="ph ph-text mt-16" style="min-height: 100px;">デザインストーリー(2-3段落 / Breuerの設計背景・歴史的価値)</div>
+      </div>
+
+      <table class="product-spec-table">
+        <tr><td>素材</td><td class="ph-text" style="border: none;">スチール / レザー / 詳細</td></tr>
+        <tr><td>寸法</td><td class="ph-text" style="border: none;">W / D / H</td></tr>
+        <tr><td>重量</td><td class="ph-text" style="border: none;">○ kg</td></tr>
+        <tr><td>耐荷重</td><td class="ph-text" style="border: none;">○ kg</td></tr>
+      </table>
+
+      <div>
+        <span class="ph-label">Color Variation — 2 Colors</span>
+        <div class="color-selector">
+          <div class="color-swatch-wrap">
+            <div class="color-swatch active" style="background: #1A1A1A;"></div>
+            <div class="color-swatch-label">Black</div>
+          </div>
+          <div class="color-swatch-wrap">
+            <div class="color-swatch" style="background: #E8DFC9;"></div>
+            <div class="color-swatch-label">Ivory</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-purchase-bar">
+        <div>
+          <span class="ph-label">Price</span>
+          <div class="product-price">¥65,000</div>
+        </div>
+        <button class="ph-cta">購入する →</button>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — Wassily Chair / 主商品セクション</strong>
+    ワシリー指名検索流入の即決層に応える完結セクション。スペック表は「失敗したくない」心理に応える信頼性訴求。カラーはBlack / Ivoryの2色展開。このセクション単体でCV完結できる設計にする。CTAは強め(購入する)。
+  </div>
+</div>
+
+<!-- S06: D4 FOLDING CHAIR -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S06 — Product B: D4 Folding Chair (Cross-sell)</div>
+    <div class="wf-content">
+      <div class="text-center" style="margin-bottom: 32px;">
+        <div class="ph ph-text" style="display: inline-block; padding: 12px 24px; font-style: italic; max-width: 600px;">セクションリードコピー("同じBreuerの、もう一脚" / クロスセル文脈の橋渡し)</div>
+      </div>
+
+      <div class="product-header">
+        <div class="ph-label">Product 02</div>
+        <div class="product-title-en mt-16">D4 Folding Chair</div>
+        <div class="product-meta-row">D4 フォールディングチェア / Marcel Breuer / 1927</div>
+      </div>
+
+      <div class="ph ph-image product-main-visual">Main Product Visual<br>(D4の特徴である折りたたみ機構が見える構図)</div>
+
+      <div class="product-sub-visuals">
+        <div class="ph ph-image">展開状態</div>
+        <div class="ph ph-image">折りたたみ過程</div>
+        <div class="ph ph-image">収納状態</div>
+      </div>
+
+      <div class="mt-32">
+        <span class="ph-label">Design Story</span>
+        <div class="ph ph-text mt-16" style="min-height: 100px;">デザインストーリー / 機能性訴求(2-3段落 / 折りたたみ機構の名作としての価値)</div>
+      </div>
+
+      <table class="product-spec-table">
+        <tr><td>素材</td><td class="ph-text" style="border: none;">スチール / 詳細</td></tr>
+        <tr><td>寸法</td><td class="ph-text" style="border: none;">W / D / H (展開時) + 収納時</td></tr>
+        <tr><td>重量</td><td class="ph-text" style="border: none;">○ kg</td></tr>
+        <tr><td>耐荷重</td><td class="ph-text" style="border: none;">○ kg</td></tr>
+      </table>
+
+      <div>
+        <span class="ph-label">Color Variation — 4 Colors</span>
+        <div class="color-selector">
+          <div class="color-swatch-wrap">
+            <div class="color-swatch active" style="background: #1A1A1A;"></div>
+            <div class="color-swatch-label">Black</div>
+          </div>
+          <div class="color-swatch-wrap">
+            <div class="color-swatch" style="background: #6B4423;"></div>
+            <div class="color-swatch-label">Brown</div>
+          </div>
+          <div class="color-swatch-wrap">
+            <div class="color-swatch" style="background: #E8DFC9;"></div>
+            <div class="color-swatch-label">Ivory</div>
+          </div>
+          <div class="color-swatch-wrap">
+            <div class="color-swatch" style="background: #D9A441;"></div>
+            <div class="color-swatch-label">Yellow</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-purchase-bar">
+        <div>
+          <span class="ph-label">Price</span>
+          <div class="product-price">¥65,000</div>
+        </div>
+        <button class="ph-cta">購入する →</button>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — D4 Folding Chair / クロスセル配置の戦略意図</strong>
+    D4は集客KWがほぼゼロのため、このLP上での認知→購入が唯一の販路。Wassilyの直後に配置するのは絶対条件。スクロール離脱前に提示しないとD4は売れない。折りたたみ機構の連続写真が機能訴求の決め手。カラーはBlack / Brown / Ivory / Yellowの4色展開で、Wassilyよりカラーバリエーションを豊富に。
+  </div>
+</div>
+
+<div class="section-divider">
+  <span class="section-divider-text">Trust & Decision</span>
+</div>
+
+<!-- S07: QUALITY -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S07 — Quality & Trust</div>
+    <div class="wf-content">
+      <div class="text-center" style="margin-bottom: 32px;">
+        <span class="ph-label">Section Title</span>
+        <div class="ph-h" style="font-size: 28px; margin-top: 8px;">妥協のない品質</div>
+      </div>
+      <div class="quality-grid">
+        <div class="quality-item">
+          <div class="quality-icon">ICON</div>
+          <div class="quality-h">品質項目 01</div>
+          <div class="quality-desc">例) JIS規格適合</div>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">ICON</div>
+          <div class="quality-h">品質項目 02</div>
+          <div class="quality-desc">例) 耐久試験クリア</div>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">ICON</div>
+          <div class="quality-h">品質項目 03</div>
+          <div class="quality-desc">例) 素材産地・製造工程</div>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">ICON</div>
+          <div class="quality-h">品質項目 04</div>
+          <div class="quality-desc">例) 1年保証</div>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">ICON</div>
+          <div class="quality-h">品質項目 05</div>
+          <div class="quality-desc">例) 配送・組立サービス</div>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">ICON</div>
+          <div class="quality-h">品質項目 06</div>
+          <div class="quality-desc">例) カスタマーサポート</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — Quality / 購入直前の不安解消</strong>
+    リプロダクト=怪しいというイメージへの反駁セクション。「失敗したくない」「スペックを確かめたい」心理に応える。3×2グリッドが標準、項目数によって2×3や4×2に調整。
+  </div>
+</div>
+
+<!-- S08: VOICE -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S08 — Voice (Customer Reviews)</div>
+    <div class="wf-content">
+      <div class="text-center" style="margin-bottom: 32px;">
+        <span class="ph-label">Section Title</span>
+        <div class="ph-h" style="font-size: 28px; margin-top: 8px;">選んだ人の声</div>
+      </div>
+      <div class="voice-row">
+        <div class="voice-card">
+          <div class="voice-text">"レビュー本文(2-3行) / αテスター・モニターのコメント"</div>
+          <div class="voice-meta">30代 / IT職 / Wassily購入</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-text">"レビュー本文(2-3行)"</div>
+          <div class="voice-meta">30代 / クリエイティブ職 / D4購入</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-text">"レビュー本文(2-3行)"</div>
+          <div class="voice-meta">40代 / 建築職 / 両方購入</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — Voice / 社会的証明</strong>
+    立ち上げ初期はレビューゼロのため、αテスター・モニター3-5名の声を必ず用意して入れる。社会的証明ゼロのLPはCVRが下がるため、空欄や非表示にしない。年代・職業を併記することでターゲットへの親近感を演出。
+  </div>
+</div>
+
+<!-- S09: FAQ -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S09 — FAQ</div>
+    <div class="wf-content">
+      <div style="margin-bottom: 32px;">
+        <span class="ph-label">Section Title</span>
+        <div class="ph-h" style="font-size: 28px; margin-top: 8px;">よくある質問</div>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Q. リプロダクトとコピーの違いは?</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Q. なぜこの価格で実現できるのか?</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Q. WassilyとD4、どちらを選べばいい?</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Q. 配送方法・組み立ては?</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Q. 保証・返品について</div>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — FAQ / 最後の離脱要因の解消</strong>
+    アコーディオン式で展開。特に重要なQ「WassilyとD4、どちらを選べばいい?」は意図的に配置。これに答える形で「どちらも選んでください」という導線を作れば、客単価が向上。
+  </div>
+</div>
+
+<!-- S10: FINAL CTA -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S10 — Final CTA (Closing)</div>
+    <div class="wf-content">
+      <div class="text-center" style="margin-bottom: 40px;">
+        <span class="ph-label">Closing Copy</span>
+        <div class="ph-h" style="font-size: 32px; margin-top: 8px;">クロージングコピー</div>
+      </div>
+      <div class="final-cta-grid">
+        <div class="final-cta-card">
+          <div class="ph ph-image">Wassily Visual</div>
+          <div>
+            <div class="ph-label">Product 01</div>
+            <div class="product-title-en mt-16" style="font-size: 28px;">Wassily Chair</div>
+            <div class="product-price mt-16">¥65,000</div>
+          </div>
+          <button class="ph-cta" style="width: 100%;">購入する →</button>
+        </div>
+        <div class="final-cta-card">
+          <div class="ph ph-image">D4 Visual</div>
+          <div>
+            <div class="ph-label">Product 02</div>
+            <div class="product-title-en mt-16" style="font-size: 28px;">D4 Folding Chair</div>
+            <div class="product-price mt-16">¥65,000</div>
+          </div>
+          <button class="ph-cta" style="width: 100%;">購入する →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — Final CTA / 最終決断ポイント</strong>
+    両商品を対等に並べて、どちらか必ず選ばせるクロージング。「比較しながら決める」UXを最後に提供。スマホでは縦並びに自動変換。離脱率最も高い箇所のため、視覚的に決断しやすい設計が重要。
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="wf-footer">
+  <div class="wf-footer-inner">
+    <div>
+      <h4>BRF</h4>
+      <div class="ph ph-text" style="min-height: 60px;">Bauhaus Reproduct Furniture<br>ブランドステートメント / フッターコピー</div>
+    </div>
+    <div>
+      <h4 style="font-size: 14px; letter-spacing: 0.15em; text-transform: uppercase;">Product</h4>
+      <div class="ph ph-text" style="min-height: 80px;">商品リンク</div>
+    </div>
+    <div>
+      <h4 style="font-size: 14px; letter-spacing: 0.15em; text-transform: uppercase;">Company</h4>
+      <div class="ph ph-text" style="min-height: 80px;">会社情報 / 特商法</div>
+    </div>
+    <div>
+      <h4 style="font-size: 14px; letter-spacing: 0.15em; text-transform: uppercase;">Connect</h4>
+      <div class="ph ph-text" style="min-height: 80px;">Instagram / Contact</div>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-indicator">
+  Sticky Footer CTA (Mobile Only) — 購入する
+</div>
+<div class="sticky-indicator-note">
+  ▲ MOBILE ONLY / 常時固定CTA
+</div>
+
+</body>
+</html>
