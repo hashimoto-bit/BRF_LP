@@ -458,6 +458,22 @@ body {
   color: var(--ink-sub);
 }
 
+/* NAV / HAMBURGER */
+.nav-toggle {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 44px; height: 40px; padding: 10px;
+  background: var(--bg-alt); border: 1px dashed var(--line);
+  border-radius: 2px; cursor: pointer;
+}
+.nav-toggle span {
+  display: block; width: 100%; height: 2px; background: var(--ink);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .grid-2, .grid-3,
@@ -481,6 +497,28 @@ body {
   .sticky-indicator { display: flex; }
   .sticky-indicator-note { display: block; }
   .wf-content { padding: 56px 20px 32px; }
+
+  /* Global header → hamburger */
+  .nav-toggle { display: flex; }
+  .nav-menu { display: none; }
+  .nav-menu.open {
+    display: flex; flex-direction: column; align-items: stretch;
+    width: 100%; order: 3; gap: 8px; margin-top: 14px;
+  }
+  .nav-menu.open .ph-text { width: 100%; min-width: 0; }
+}
+
+@media (max-width: 480px) {
+  .meta-bar .meta-left > span:not(.meta-tag) { display: none; }
+  .doc-title { font-size: 26px; }
+  .s01-top { font-size: 24px; }
+  .s01-bottom { flex-direction: column; align-items: stretch; gap: 16px; }
+  .s01-bottom .ph-cta { width: 100%; }
+  .product-purchase-bar { flex-direction: column; align-items: stretch; gap: 14px; }
+  .product-purchase-bar .ph-cta { width: 100%; }
+  .lifestyle-grid { grid-template-columns: 1fr; min-height: 0; }
+  .wf-content { padding: 52px 16px 28px; }
+  .legend { gap: 16px 20px; }
 }
 
 @media print {
@@ -495,19 +533,19 @@ body {
     <span class="meta-tag">WIREFRAME</span>
     <span>BRF Landing Page — Component Layout</span>
   </div>
-  <div>v.02</div>
+  <div>v.03</div>
 </div>
 
 <header class="doc-header">
   <div class="doc-header-inner">
     <div>
       <div class="doc-title">BRF Landing Page<br>Wireframe</div>
-      <div class="doc-sub">Wassily Chair + D4 Folding Chair / Google検索広告 + Meta広告 両対応</div>
+      <div class="doc-sub">Wassily Chair + D4 Folding Chair / Google検索広告 + Meta広告 両対応 / 高関連隣接層(パーソナル・ラウンジ)受け皿</div>
     </div>
     <div class="doc-meta">
       Bauhaus Reproduct Furniture<br>
       Wireframe Document<br>
-      2026.05
+      2026.06
     </div>
   </div>
 </header>
@@ -519,6 +557,18 @@ body {
   <div class="legend-item"><span class="legend-box note"></span><span>Design Note</span></div>
 </div>
 
+<!-- V.03 STRATEGY NOTE -->
+<div class="wf-section">
+  <div class="wf-note" style="margin-bottom: 0;">
+    <strong>v.03 反映方針 — 需要拡張とチャネル設計の反映</strong>
+    Ahrefs調査の結果、(1)製品が本当に合致する高関連の隣接層=「パーソナルチェア / ラウンジチェア」をリスティングの拡張ターゲットに追加(CPO試算 約¥8,000・粗利ライン¥33,800内)、(2)情緒価値=「椅子を買うのではなく、止まる時間・夫婦の時間を作る道具」をLP上に明示レイヤー化、の2点をワイヤーに反映した。<br>
+    ・S01 Hero:リスティング流入の経路を「作品名」だけでなく「パーソナル/ラウンジ」検索からの着地にも対応させる(バウハウスを知らない層への橋渡し)。<br>
+    ・S02B(新設):情緒価値レイヤー。Meta流入の北極星メッセージをLPにも置く。生成済みライフスタイル画像を主役に。<br>
+    ・S05/S06 製品見出し・スペックに「パーソナルチェア / ラウンジチェア」の語を内包させ、隣接検索との意味的整合とSEOを両取りする。<br>
+    ※ ダイニング・リクライニング等の低関連/罠KWはLP設計上も追わない(製品ミスマッチのため)。
+  </div>
+</div>
+
 <!-- S00: GLOBAL HEADER -->
 <div class="wf-section">
   <div class="wf-frame">
@@ -526,17 +576,21 @@ body {
     <div class="wf-content" style="padding-top: 48px;">
       <div class="flex-row" style="justify-content: space-between;">
         <div class="ph ph-text" style="width: 120px; min-height: 40px;">LOGO</div>
-        <div class="flex-row">
+        <button class="nav-toggle" type="button" aria-label="メニュー" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav-menu flex-row">
           <div class="ph ph-text" style="min-width: 80px; min-height: 32px;">About</div>
           <div class="ph ph-text" style="min-width: 80px; min-height: 32px;">Product</div>
           <div class="ph ph-text" style="min-width: 80px; min-height: 32px;">Contact</div>
-        </div>
+        </nav>
       </div>
     </div>
   </div>
   <div class="wf-note">
     <strong>Note — Global Header</strong>
-    スクロール時も追従する常時固定ヘッダー。ロゴをタップでLP冒頭に戻る。メニューはアンカーリンクで各セクションへ移動。モバイル時はハンバーガーメニュー化を想定。
+    スクロール時も追従する常時固定ヘッダー。ロゴをタップでLP冒頭に戻る。メニューはアンカーリンクで各セクションへ移動。<br>
+    <span style="color:var(--note);font-weight:500;">v.03実装:</span> 900px以下でグローバルメニューをハンバーガー化(タップで開閉=このワイヤー上でも動作)。開くとメニューが縦並びでドロップダウン表示される。
   </div>
 </div>
 
@@ -553,7 +607,7 @@ body {
         <div class="s01-bottom">
           <div class="s01-price-block">
             <span class="ph-label">Sub Copy</span>
-            <div class="ph ph-text" style="min-width: 280px;">サブコピー(1-2行)</div>
+            <div class="ph ph-text" style="min-width: 280px;">サブコピー(1-2行)<br>※「作品名」を知らない層にも届く言い換えを併記<br>(例: あなたの部屋に、ひとつの名作を。 / くつろぎの定位置に)</div>
           </div>
           <div>
             <span class="ph-label">CTA (弱め)</span>
@@ -564,8 +618,9 @@ body {
     </div>
   </div>
   <div class="wf-note">
-    <strong>Note — Hero / 両流入の同時対応設計</strong>
-    上半分=世界観コピー(Meta広告流入の共感獲得)、下半分=価格+CTA(リスティング流入の即決確認)の3層構造。CTAは「商品を見る」など弱めの誘導に留め、まだクロージングしない。Meta流入の潜在層がいきなり強CTAで離脱するのを防ぐ。
+    <strong>Note — Hero / 3経路の同時対応設計</strong>
+    上半分=世界観コピー(Meta広告流入の共感獲得)、下半分=価格+CTA(リスティング流入の即決確認)の3層構造。CTAは「商品を見る」など弱めの誘導に留め、まだクロージングしない。Meta流入の潜在層がいきなり強CTAで離脱するのを防ぐ。<br>
+    <span style="color:var(--note);font-weight:500;">v.03追加:</span> リスティング流入には「作品名(ワシリー等)」だけでなく「パーソナルチェア / ラウンジチェア」検索からの着地も含まれる。後者はバウハウスを知らない層なので、ステートメント/サブコピーは「名作の再構築」と「くつろぎの一脚」の両方の意味で読めるよう言い換えを併記し、着地直後に違和感なく受け止められるようにする。
   </div>
 </div>
 
@@ -604,6 +659,38 @@ body {
   <div class="wf-note">
     <strong>Note — 使用イメージ / カルーセル形式</strong>
     Heroの直後に配置することで、スクロール初期にブランドの世界観を強く印象付ける。Meta広告経由の潜在層(ビジュアル系流入)に対して「これは自分の暮らしに合う」と直感的に共感させる役割。大判メインビジュアル1枚+下に小さいサムネイル横並びの形式で、メインビジュアルが時間経過で自動切り替わる(4-6秒間隔想定)。サムネイルクリックでも切替可能にする。
+  </div>
+</div>
+
+<!-- S02B: 情緒価値 / この椅子がつくる時間 -->
+<div class="wf-section">
+  <div class="wf-frame">
+    <div class="wf-label">S02B — この椅子がつくる時間 (情緒価値)</div>
+    <div class="wf-content">
+      <div class="grid-2" style="align-items: center; gap: 40px;">
+        <div class="ph ph-image" style="min-height: 320px;">
+          ライフスタイル写真 (大判 / 主役)<br>
+          例: 夫婦がD4に座り、夕景の部屋でワインを楽しむ<br>
+          ※生成済みのNano Banana画像を使用 (BRF_D4.png)
+        </div>
+        <div>
+          <span class="ph-label">Section Lead</span>
+          <div class="ph-h" style="font-size: 28px; margin: 8px 0 20px; line-height: 1.4;">椅子を、買うのではない。<br>止まる時間を、置く。</div>
+          <div class="ph ph-text" style="width: 100%; min-height: 130px;">
+            ナラティブ本文 (4-6行) ※コピーは別途<br><br>
+            「深く座ると、少しだけ時間がゆるむ。<br>
+            読む、聴く、向き合って話す——<br>
+            この一脚は、その時間をつくるための道具。」<br>
+            (情緒・体験を語り、スペックや価格は語らない)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note">
+    <strong>Note — 情緒価値レイヤー / Meta北極星のLP内アンカー</strong>
+    検索需要のない「情緒・体験」(ワイン/夫婦時間/止まる時間)はMeta広告の主戦場であり、LP上にもその世界観の受け皿を置く。S02の使用イメージ(視覚)に対し、ここは「なぜこの椅子か=時間をつくる道具」という言葉での意味付けを担う。<br>
+    主役は生成済みのライフスタイル画像1枚。コピーは体験・情緒に徹し、スペック/価格には触れない(それらは下のProductセクションで担保)。Meta流入の共感を、製品検討へ滑らかに接続するブリッジ。
   </div>
 </div>
 
@@ -736,7 +823,8 @@ body {
   </div>
   <div class="wf-note">
     <strong>Note — Wassily Chair / 主商品セクション</strong>
-    ワシリー指名検索流入の即決層に応える完結セクション。スペック表は「失敗したくない」心理に応える信頼性訴求。カラーはBlack / Ivoryの2色展開。このセクション単体でCV完結できる設計にする。CTAは強め(購入する)。
+    ワシリー指名検索流入の即決層に応える完結セクション。スペック表は「失敗したくない」心理に応える信頼性訴求。カラーはBlack / Ivoryの2色展開。このセクション単体でCV完結できる設計にする。CTAは強め(購入する)。<br>
+    <span style="color:var(--note);font-weight:500;">v.03追加:</span> 見出し・リード・スペックに「パーソナルチェア」「ラウンジチェア」「一人掛け」の語を自然に内包させ、その検索からの着地ユーザーにも「これは自分が探していた一脚だ」と認識させる(隣接検索との意味的整合＋SEO)。
   </div>
 </div>
 
@@ -1001,5 +1089,17 @@ body {
   ▲ MOBILE ONLY / 常時固定CTA
 </div>
 
+<script>
+/* Global header hamburger toggle (wireframe demo) */
+document.addEventListener('click', function (e) {
+  var toggle = e.target.closest('.nav-toggle');
+  if (!toggle) return;
+  var menu = toggle.parentElement.querySelector('.nav-menu');
+  if (!menu) return;
+  var open = menu.classList.toggle('open');
+  toggle.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', String(open));
+});
+</script>
 </body>
 </html>
